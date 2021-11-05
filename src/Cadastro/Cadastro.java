@@ -41,8 +41,9 @@ Conexao conexao = new Conexao();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        buttonAdm = new javax.swing.JCheckBox();
-        buttonFunc = new javax.swing.JCheckBox();
+        permissaoAdministrador = new javax.swing.JCheckBox();
+        permissaoFuncionario = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -64,7 +65,7 @@ Conexao conexao = new Conexao();
             }
         });
         getContentPane().add(jtextNome);
-        jtextNome.setBounds(430, 120, 210, 22);
+        jtextNome.setBounds(390, 120, 210, 20);
 
         jtextEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +73,7 @@ Conexao conexao = new Conexao();
             }
         });
         getContentPane().add(jtextEmail);
-        jtextEmail.setBounds(430, 190, 210, 22);
+        jtextEmail.setBounds(390, 190, 210, 20);
 
         jtextSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,23 +81,23 @@ Conexao conexao = new Conexao();
             }
         });
         getContentPane().add(jtextSenha);
-        jtextSenha.setBounds(430, 260, 210, 22);
+        jtextSenha.setBounds(390, 260, 210, 20);
 
         jLabel3.setText("Nome ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(430, 90, 41, 16);
+        jLabel3.setBounds(390, 90, 41, 14);
 
         jLabel5.setText("Email");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(430, 160, 41, 16);
+        jLabel5.setBounds(390, 160, 41, 14);
 
         jLabel6.setText("Senha");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(430, 230, 36, 16);
+        jLabel6.setBounds(390, 230, 30, 14);
 
         jLabel7.setText("Permissão");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(430, 300, 70, 16);
+        jLabel7.setBounds(390, 300, 70, 14);
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -105,25 +106,34 @@ Conexao conexao = new Conexao();
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(480, 380, 100, 25);
+        jButton1.setBounds(450, 380, 100, 23);
 
-        buttonAdm.setText("Administrador");
-        buttonAdm.addActionListener(new java.awt.event.ActionListener() {
+        permissaoAdministrador.setText("Administrador");
+        permissaoAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAdmActionPerformed(evt);
+                permissaoAdministradorActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonAdm);
-        buttonAdm.setBounds(430, 330, 109, 25);
+        getContentPane().add(permissaoAdministrador);
+        permissaoAdministrador.setBounds(380, 330, 110, 23);
 
-        buttonFunc.setText("Funcionário");
-        buttonFunc.addActionListener(new java.awt.event.ActionListener() {
+        permissaoFuncionario.setText("Funcionário");
+        permissaoFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonFuncActionPerformed(evt);
+                permissaoFuncionarioActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonFunc);
-        buttonFunc.setBounds(550, 330, 100, 25);
+        getContentPane().add(permissaoFuncionario);
+        permissaoFuncionario.setBounds(520, 330, 100, 23);
+
+        jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(450, 410, 100, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,13 +158,19 @@ Conexao conexao = new Conexao();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void buttonAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdmActionPerformed
+    private void permissaoAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_permissaoAdministradorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAdmActionPerformed
+    }//GEN-LAST:event_permissaoAdministradorActionPerformed
 
-    private void buttonFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFuncActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonFuncActionPerformed
+    private void permissaoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_permissaoFuncionarioActionPerformed
+        
+    }//GEN-LAST:event_permissaoFuncionarioActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Workspace.telaWorkspace workspace = new Workspace.telaWorkspace();
+        workspace.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,9 +208,8 @@ Conexao conexao = new Conexao();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox buttonAdm;
-    private javax.swing.JCheckBox buttonFunc;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -205,5 +220,7 @@ Conexao conexao = new Conexao();
     private javax.swing.JFormattedTextField jtextEmail;
     private javax.swing.JFormattedTextField jtextNome;
     private javax.swing.JFormattedTextField jtextSenha;
+    private javax.swing.JCheckBox permissaoAdministrador;
+    private javax.swing.JCheckBox permissaoFuncionario;
     // End of variables declaration//GEN-END:variables
 }

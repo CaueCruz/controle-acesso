@@ -223,6 +223,7 @@ public class telaWorkspace extends javax.swing.JFrame {
        
         Cadastro cadastro = new Cadastro();
          cadastro.setVisible(true);
+         dispose();
          
     }//GEN-LAST:event_jButton2ActionPerformed
 

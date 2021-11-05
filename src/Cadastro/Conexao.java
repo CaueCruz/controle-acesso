@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Cadastro;
 
 import java.sql.Connection;
@@ -20,9 +15,9 @@ public class Conexao {
         public void Conecta(){    
             try {     
                 String serverName = "localhost";
-                String mydatabase = "CONTROLE_DE_ACESSO";
+                String mydatabase = "CONTROLE_ACESSO";
                 String username = "root";
-                String password = "220816";          
+                String password = "dutr7chet3cn0l0g14";          
                 String driverName = "com.mysql.cj.jdbc.Driver";
                 Class.forName(driverName);           
                 String url = "jdbc:mysql://" + serverName + "/" + mydatabase+"?useTimezone=true&serverTimezone=UTC";
@@ -70,13 +65,20 @@ public class Conexao {
             JOptionPane.showMessageDialog(null,"Falta Preencher Campo!\n "+"Aluno: "+usuario.getNome()+"\n"+"RGM: "+ usuario.getEmail()+"\n"+"Curso: "+usuario.getPermissao()); 
         }
     }
+        
+    public void consutarDados(String email, String senha ){
+        usuario.setEmail(email);
+        usuario.setSenha(senha);
+        Logar();
+    }
     public void Logar(){
     PreparedStatement pst=null;
 
-    String sql = "SELECT*FROM USUARIOS WHERE Email=?";
+    String sql = "SELECT*FROM USUARIOS WHERE Email=? AND Senha=?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, usuario.getEmail());
+            pst.setString(2, usuario.getSenha());
             rs = pst.executeQuery();
             if(rs.next()){
                 Workspace.telaWorkspace telaworkspace = new Workspace.telaWorkspace();

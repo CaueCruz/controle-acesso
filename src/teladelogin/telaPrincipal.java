@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package teladelogin;
 
 import Cadastro.Cadastro;
 import javax.swing.JOptionPane;
+import Cadastro.Conexao;
 
 /**
  *
@@ -14,11 +10,10 @@ import javax.swing.JOptionPane;
  */
 public class telaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form telaPrincipal
-     */
+    Conexao conexao = new Conexao();
     public telaPrincipal() {
         initComponents();
+        conexao.Conecta();
     }
 
     /**
@@ -31,13 +26,13 @@ public class telaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jtext = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        email = new javax.swing.JFormattedTextField();
+        labelEmail = new javax.swing.JLabel();
+        labelSenha = new javax.swing.JLabel();
+        jButtonLogin = new javax.swing.JButton();
+        jButtonCadastrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jText = new javax.swing.JPasswordField();
+        senha = new javax.swing.JPasswordField();
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/b9376f662190a9e43827ed3e3c013149.png"))); // NOI18N
 
@@ -55,75 +50,76 @@ public class telaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jtext.addActionListener(new java.awt.event.ActionListener() {
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
-        getContentPane().add(jtext);
-        jtext.setBounds(400, 140, 220, 22);
+        getContentPane().add(email);
+        email.setBounds(400, 140, 220, 20);
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel1.setText("Email");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(400, 110, 90, 21);
+        labelEmail.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        labelEmail.setText("Email");
+        getContentPane().add(labelEmail);
+        labelEmail.setBounds(400, 110, 90, 21);
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel2.setText("Senha");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(400, 210, 70, 21);
+        labelSenha.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        labelSenha.setText("Senha");
+        getContentPane().add(labelSenha);
+        labelSenha.setBounds(400, 210, 70, 21);
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLogin.setText("Login");
+        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(410, 300, 90, 25);
+        getContentPane().add(jButtonLogin);
+        jButtonLogin.setBounds(410, 300, 90, 23);
 
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(510, 300, 100, 25);
+        getContentPane().add(jButtonCadastrar);
+        jButtonCadastrar.setBounds(510, 300, 100, 23);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/b9376f662190a9e43827ed3e3c013149.png"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(-140, 0, 530, 450);
 
-        jText.addActionListener(new java.awt.event.ActionListener() {
+        senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextActionPerformed(evt);
+                senhaActionPerformed(evt);
             }
         });
-        getContentPane().add(jText);
-        jText.setBounds(400, 240, 220, 22);
+        getContentPane().add(senha);
+        senha.setBounds(400, 240, 220, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-Workspace.telaWorkspace telaworkspace = new Workspace.telaWorkspace();
-                telaworkspace.setVisible(true);
-                dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
 
-    private void jtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextActionPerformed
+        String email = this.email.getText();
+        String senha = this.senha.getText();
+        conexao.consutarDados(email, senha);
+    }//GEN-LAST:event_jButtonLoginActionPerformed
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
     private void formAncestorMoved(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formAncestorMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_formAncestorMoved
 
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         
-        if(jtext.getText().equals(Email[0])||jtext.getText().equals(Email[1])&&jText.getText().equals(Senha)) {
+        if(email.getText().equals(Email[0])||email.getText().equals(Email[1])&&senha.getText().equals(Senha)) {
          JOptionPane.showMessageDialog(null, "Bem vindo Administrador");
         Cadastro cadastro = new Cadastro();
          cadastro.setVisible(true);
@@ -138,11 +134,11 @@ Workspace.telaWorkspace telaworkspace = new Workspace.telaWorkspace();
      
                     
                    
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
-    private void jTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextActionPerformed
+    private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextActionPerformed
+    }//GEN-LAST:event_senhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,14 +176,14 @@ Workspace.telaWorkspace telaworkspace = new Workspace.telaWorkspace();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JFormattedTextField email;
+    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonLogin;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jText;
-    private javax.swing.JFormattedTextField jtext;
+    private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JPasswordField senha;
     // End of variables declaration//GEN-END:variables
 
     // strings - permição para Acessar adm  
