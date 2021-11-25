@@ -119,21 +119,9 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         
-        if(email.getText().equals(Email[0])||email.getText().equals(Email[1])&&senha.getText().equals(Senha)) {
-         JOptionPane.showMessageDialog(null, "Bem vindo Administrador");
-        Cadastro cadastro = new Cadastro();
-         cadastro.setVisible(true);
-         dispose();
-        
-        }else {
-        
-         JOptionPane.showMessageDialog(null, "Seu usuário não possui permição para cadastrar outros usuários");
-        }      
-           
-        
-     
-                    
-                   
+        String email = this.email.getText();
+        String senha = this.senha.getText();
+        conexao.consutarDados(email, senha);      
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
