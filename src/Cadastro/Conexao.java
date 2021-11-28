@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import Workspace.telaWorkspace;
+import teladelogin.telaPrincipal;
 
 public class Conexao {
     Usuario usuario = new Usuario();
@@ -66,31 +68,85 @@ public class Conexao {
         }
     }
         
-    public void consutarDados(String email, String senha ){
+    public void InserirDados(String email, String senha){
         usuario.setEmail(email);
         usuario.setSenha(senha);
         Logar();
     }
+    
     public void Logar(){
     PreparedStatement pst=null;
 
-    String sql = "SELECT*FROM USUARIOS WHERE Email=? AND Senha=?";
-        try {
-            pst = conexao.prepareStatement(sql);
-            pst.setString(1, usuario.getEmail());
-            pst.setString(2, usuario.getSenha());
-            rs = pst.executeQuery();
-            if(rs.next()){
-                Workspace.telaWorkspace telaworkspace = new Workspace.telaWorkspace();
-                telaworkspace.setVisible(true);
-                dispose();
-            } else{
-                JOptionPane.showMessageDialog(null, "Usuário e ou senha inválidos!");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }       
+        String sql = "SELECT *FROM USUARIOS WHERE Email=? AND Senha=?";
+            try {
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, usuario.getEmail());
+                pst.setString(2, usuario.getSenha());
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    telaWorkspace telaworkspace = new telaWorkspace();
+                    telaworkspace.setVisible(true);
+                    telaworkspace.jLabeEmail.setText(usuario.getEmail());
+                    dispose();
+                } else{
+                    JOptionPane.showMessageDialog(null, "Você não tem permissão ou dados para login inválidos!");
+                }
+            } 
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }      
+    }
+    
+    public void consultarCadastrar(String email, String senha ){
+        usuario.setEmail(email);
+        usuario.setSenha(senha);
+        LogarCadastrar();
+    }
+    public void LogarCadastrar(){
+    PreparedStatement pst=null;
 
+        String sql = "SELECT*FROM USUARIOS WHERE Email=? AND Senha=? AND Permissao='Administrador'";
+            try {
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, usuario.getEmail());
+                pst.setString(2, usuario.getSenha());
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    Cadastro cadastro = new Cadastro();
+                    cadastro.setVisible(true);
+                    dispose();
+                } else{
+                    JOptionPane.showMessageDialog(null, "Você não tem permissão ou dados para login inválidos!");
+                }
+            } 
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }      
+    }
+    
+     public void consultarCadastrar2(String email){
+        usuario.setEmail(email);
+        LogarCadastrar2();
+    }
+    public void LogarCadastrar2(){
+    PreparedStatement pst=null;
+
+        String sql = "SELECT*FROM USUARIOS WHERE Email=? AND Permissao='Administrador'";
+            try {
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, usuario.getEmail());
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    Cadastro cadastro = new Cadastro();
+                    cadastro.setVisible(true);
+                    dispose();
+                } else{
+                    JOptionPane.showMessageDialog(null, "Você não tem permissão!");
+                }
+            } 
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }      
     }
 
     private void dispose() {
